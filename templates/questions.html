@@ -15,11 +15,15 @@
         <p>{{question}}</p>
 
         {% for choice in choices %}
+            <input type = "radio" name = "answer" value = "{{choice}}">
             <label for = "{{choice}}">{{choice}}</label>
-            <input type = "radio" id = "{{choice}}" name = "answer" value = "{{choice}}">
             <br>
         {% endfor %}
-
+           
+        {% if allow_text == True %}
+            <input type = "text" name = "text">    
+        {% endif %}
+        <br>
         <button>Next Question</button>
     </form>
 {% endblock %}

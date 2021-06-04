@@ -3,11 +3,17 @@
 {% block title %} Survey Completed {% endblock %}
 
 {% block content %}
-    <h1>Thank you for completing the survey!</h1>
+    <h1>Thank you for completing {{survey.title}}!</h1>
     <p>Answers:</p>
     <ol>
-        {% for response in responses %}
-            <li>{{response}}</li>
+        {% for question in survey.questions %}
+            <li>
+                {{question.question}}: <b>{{responses[loop.index0]["answer"]}}</b> {{responses[loop.index0]["comment"]}}
+            </li>
         {% endfor %}
     </ol>
+
+    <form action='/'>
+        <button >Start Another Survey</button>
+    </form>
 {% endblock %}
